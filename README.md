@@ -1,1 +1,3 @@
-Data_Structure
+# Java로 배우는 자료구조
+
+인프런 Java로 배우는 자료구조 수업 정리
