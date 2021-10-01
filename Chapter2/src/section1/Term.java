@@ -1,4 +1,4 @@
-package Section1;
+package section1;
 
 public class Term {  // 하나의 항을 표현하기 위한 클래스
 	public int coef;

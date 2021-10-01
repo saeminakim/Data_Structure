@@ -1,4 +1,4 @@
-package Section1;
+package section1;
 
 public class Polynomial { // 하나의 다항식을 표현하기 위한 클래스
 	public char name;
