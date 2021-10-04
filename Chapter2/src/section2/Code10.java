@@ -13,7 +13,7 @@ public class Code10 {
 			int n = in.nextInt();
 			OrthoPolygon thePolygon = new OrthoPolygon(n);
 			for(int i = 0; i < n; i++) {
-				thePolygon.addVertex(new MyPoint2(in.nextInt(), in.nextInt()));
+//				thePolygon.addVertex(new MyPoint2(in.nextInt(), in.nextInt()));
 			}
 			MyPoint2 thePoint = new MyPoint2(in.nextInt(), in.nextInt());
 			in.close();
