@@ -1,9 +1,9 @@
 package section3;
 
 public class Polynomial3 { // 하나의 다항식을 표현하기 위한 클래스
-	public char name;
-	public Term3[] terms;
-	public int nTerms; // 항의 갯수
+	private char name;
+	private Term3[] terms;
+	private int nTerms; // 항의 갯수
 	
 	public Polynomial3() {
 		nTerms = 0;
@@ -16,13 +16,17 @@ public class Polynomial3 { // 하나의 다항식을 표현하기 위한 클래스
 		terms = new Term3[100];
 	}
 	
+	public char getName() {
+		return name;
+	}
+	
 	public void addTerm(int c, int e) {
 		int index = findTerm(e);
 		if(index != -1) {
-			terms[index].coef += c;
+			terms[index].setCoef(terms[index].getCoef() + c);
 		} else {
 			int i = nTerms - 1;
-			while(i >=0 && terms[i].expo < e) {
+			while(i >=0 && terms[i].getExpo() < e) {
 				terms[i+1] = terms[i];
 				i--;
 			}
@@ -31,9 +35,9 @@ public class Polynomial3 { // 하나의 다항식을 표현하기 위한 클래스
 		}
 	}
 
-	public int findTerm(int e) {
-		for(int i = 0; i < nTerms && terms[i].expo >= e; i++) {
-			if(terms[i].expo == e) {
+	private int findTerm(int e) {  // 외부에서 사용하지 않는건 private으로 선언
+		for(int i = 0; i < nTerms && terms[i].getExpo() >= e; i++) {
+			if(terms[i].getExpo() == e) {
 				return i;
 			}
 		}
