@@ -2,11 +2,11 @@ package section1;
 
 public class Computer {
 
-	public String manufacturer;
-	public String processor;
-	public int ramSize;
-	public int diskSize;
-	public double processorSpeed;
+	private String manufacturer;
+	private String processor;
+	private int ramSize;
+	private int diskSize;
+	private double processorSpeed;
 	
 	public Computer(String man, String proc, int ram, int disk, double procSpeed) {
 		manufacturer = man;
