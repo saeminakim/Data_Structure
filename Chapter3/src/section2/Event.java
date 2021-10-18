@@ -6,4 +6,6 @@ public class Event {
 	public Event(String title) {
 		this.title = title;
 	}
+	
+	
 }
