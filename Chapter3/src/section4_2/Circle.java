@@ -8,7 +8,7 @@ public class Circle extends Shape{
 		radius = r;
 	}
 	
-	public double computerArea() {
+	public double computeArea() {
 		return Math.PI * radius * radius;
 	}
 	

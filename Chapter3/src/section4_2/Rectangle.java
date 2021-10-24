@@ -10,7 +10,7 @@ public class Rectangle extends Shape {
 		height = h;
 	}
 
-	public double computerArea() {
+	public double computeArea() {
 		return (double) width * height;
 	}
 
