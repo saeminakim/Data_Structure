@@ -11,11 +11,39 @@ public class MySingleLinkedList<T> {
 	}
 	
 	public void addFirst(T item) {
-		Node<T> newNode = new Node<T>(item);
-		
+		Node<T> newNode = new Node<T>(item);		
 		newNode.next = head;
 		head = newNode;
 		size++;
+	}
+	
+	public void addAfter(Node<T> before, T item) {
+		Node<T> temp = new Node<T>(item);
+		temp.next = before.next;
+		before.next = temp;
+		size++;
+	}
+	
+	public T removeFirst() {
+		if(head == null)
+			return null;
+		
+		T tmp = head.data;
+		head = head.next;
+		size--;
+		
+		return tmp;
+	}
+	
+	public T removeAfter(Node<T> before) {
+		if(before.next == null)
+			return null;
+		
+		T tmp = before.next.data;
+		before.next = before.next.next;
+		size--;
+		
+		return tmp;
 	}
 	
 	public void add(int index, T item) {  // insert
