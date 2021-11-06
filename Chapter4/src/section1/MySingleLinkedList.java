@@ -100,9 +100,35 @@ public class MySingleLinkedList<T> {
 		Node<T> prev = getNode(index-1);
 		return removeAfter(prev);
 	}
+	
+	public T remove(T item) {
+		Node<T> p = head, q = null;
+		while(p != null && p.data.equals(item)) {
+			q = p;
+			p = p.next;
+		}
+		
+		if(p == null)
+			return null;
+		
+		if(q == null)
+			return removeFirst();
+		else
+			return removeAfter(q);
+		
+	}
 
 	public static void main(String[] args) {
 
+		MySingleLinkedList<String> list = new MySingleLinkedList<>();
+		list.add(0, "Saturday");
+		list.add(1, "Friday");
+		list.add(0, "Saturday");  // M, S, F
+		list.add(2, "Tuesday");  // M, S, T, F
+		
+		String str = list.get(2);  // str = "Tuesday"
+		list.remove(2);    // M, S, F
+		int pos = list.indexOf("Friday");  // pos = 2
 	}
 
 }
