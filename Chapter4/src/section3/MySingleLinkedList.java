@@ -1,5 +1,7 @@
 package section3;
 
+import java.util.Iterator;
+
 public class MySingleLinkedList<T> {
 
 	private Node<T> head; // 첫번째 노드의 주소
@@ -20,6 +22,10 @@ public class MySingleLinkedList<T> {
 			this.data = data;
 			next = null;
 		}
+	}
+	
+	public Iterator<T> iterator() {
+		return null;
 	}
 
 	private void addFirst(T item) {

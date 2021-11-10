@@ -1,5 +1,7 @@
 package section3;
 
+import java.util.Iterator;
+
 public class Polynormial {
 	
 	public char name;
@@ -41,11 +43,17 @@ public class Polynormial {
 	public int calc(int x) {
 		int result = 0;
 		
-		Node<Term> p = terms.head;
-		while(p != null) {
-			result += p.data.calc(x);
-			p = p.next;
-		}		
+//		Node<Term> p = terms.head;
+//		while(p != null) {
+//			result += p.data.calc(x);
+//			p = p.next;
+//		}		
+		
+		Iterator<Term> iter = terms.iterator();
+		while(iter.hasNext()) {
+			Term t = iter.next();
+			result += t.calc(x);
+		}
 		return result;		
 	}
 	
