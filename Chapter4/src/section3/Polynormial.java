@@ -16,28 +16,28 @@ public class Polynormial {
 		if(coef == 0)
 			return;
 		
-		Node<Term> p = terms.head, q = null;
-		while(p != null && p.data.expo > expo) {
-			q = p;
-			p = p.next;
-		}
-		
-		if(p != null && p.data.expo == expo) {
-			p.data.coef += coef;
-			if(p.data.coef == 0) {
-				if(q == null)
-					terms.removeFirst();
-				else
-					terms.removeAfter(q);
-			}
-		} 
-		else {
-			Term t = new Term(coef, expo);
-			if(q == null)
-				terms.addFirst(t);
-			else
-				terms.addAfter(q, t);			
-		}
+//		Node<Term> p = terms.head, q = null;
+//		while(p != null && p.data.expo > expo) {
+//			q = p;
+//			p = p.next;
+//		}
+//		
+//		if(p != null && p.data.expo == expo) {
+//			p.data.coef += coef;
+//			if(p.data.coef == 0) {
+//				if(q == null)
+//					terms.removeFirst();
+//				else
+//					terms.removeAfter(q);
+//			}
+//		} 
+//		else {
+//			Term t = new Term(coef, expo);
+//			if(q == null)
+//				terms.addFirst(t);
+//			else
+//				terms.addAfter(q, t);			
+//		}
 	}
 	
 	public int calc(int x) {
@@ -58,7 +58,7 @@ public class Polynormial {
 	}
 	
 	public String toString() {
-//		String result = "";
+		String result = "";
 //		
 //		Node<Term> p = terms.head;
 //		while(p != null) {
@@ -68,13 +68,20 @@ public class Polynormial {
 //		return result;	
 		
 		// 문자열의 사이즈가 클 때는 StringBuilder를 이용하는게 더 효율적
-		StringBuilder sb = new StringBuilder();
-		sb.append(name + "(x)=");
-		Node<Term> p = terms.head;
-		while(p != null) {
-			sb.append(" + " +p.data.toString());
-			p = p.next;
+//		StringBuilder sb = new StringBuilder();
+//		sb.append(name + "(x)=");
+//		Node<Term> p = terms.head;
+//		while(p != null) {
+//			sb.append(" + " +p.data.toString());
+//			p = p.next;
+//		}
+//		return sb.toString();	
+		
+		Iterator<Term> iter = terms.iterator();
+		while(iter.hasNext()) {
+			Term t = iter.next();
+			result += ("+" + t.toString());
 		}
-		return sb.toString();		
+		return result;
 	}	
 }

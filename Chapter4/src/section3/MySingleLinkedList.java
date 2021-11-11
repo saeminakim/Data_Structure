@@ -1,6 +1,7 @@
 package section3;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MySingleLinkedList<T> {
 
@@ -25,7 +26,31 @@ public class MySingleLinkedList<T> {
 	}
 	
 	public Iterator<T> iterator() {
-		return null;
+		return new MyIterator();
+	}
+	
+	private class MyIterator implements Iterator<T> {
+		private Node<T> nextNode;
+		
+		public MyIterator() {
+			nextNode = head;
+		}
+		
+		public boolean hasNext() {
+			return (nextNode != null);
+		}
+		
+		public T next() {
+			if(nextNode == null)
+				throw new NoSuchElementException();
+			T val = nextNode.data;
+			nextNode = nextNode.next;
+			return val;
+		}
+		
+		public void remove() {
+			// º¸·ù
+		}
 	}
 
 	private void addFirst(T item) {
@@ -100,7 +125,7 @@ public class MySingleLinkedList<T> {
 
 	public void add(int index, T item) {  // insert
 		if(index < 0 || index > size)
-			return;
+			throw new IndexOutOfBoundsException();
 		
 		if(index == 0)
 			addFirst(item);
@@ -112,14 +137,14 @@ public class MySingleLinkedList<T> {
 
 	public T remove(int index) {  // delete
 		if(index < 0 || index >= size)
-			return null;
+			throw new IndexOutOfBoundsException();
 		if(index == 0)
 			return removeFirst();
 		Node<T> prev = getNode(index-1);
 		return removeAfter(prev);
 	}
 	
-	public T remove(T item) {
+	public boolean remove(T item) {
 		Node<T> p = head, q = null;
 		while(p != null && p.data.equals(item)) {
 			q = p;
@@ -127,12 +152,14 @@ public class MySingleLinkedList<T> {
 		}
 		
 		if(p == null)
-			return null;
-		
-		if(q == null)
-			return removeFirst();
-		else
-			return removeAfter(q);
+			return false;
+		if(q == null) {
+			T tmp = removeFirst();
+			return (tmp != null);
+		} else {
+			T tmp = removeAfter(q);
+			return (tmp != null);
+		}
 	}
 	
 	public int size() {
