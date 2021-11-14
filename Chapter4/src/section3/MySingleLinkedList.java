@@ -29,6 +29,7 @@ public class MySingleLinkedList<T> {
 		return new MyIterator();
 	}
 	
+	// inner class
 	private class MyIterator implements Iterator<T> {
 		private Node<T> nextNode;
 		
