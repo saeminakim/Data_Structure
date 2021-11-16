@@ -55,7 +55,6 @@ public class KWLinkedList<E> {
 					nextItem = nextItem.next;
 				}
 			}
-
 		}
 
 		@Override
@@ -105,13 +104,11 @@ public class KWLinkedList<E> {
 
 		@Override
 		public void remove() {
-			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
 		public void set(E e) {
-			// TODO Auto-generated method stub
 			
 		}
 
@@ -147,27 +144,37 @@ public class KWLinkedList<E> {
 	}
 	
 	public int indexOf(E item) {
-		
-		
-		return 0;
+		Node<E> p = head;
+		int index = 0;
+		while(p != null) {
+			if(p.data.equals(item))
+				return index;
+			p = p.next;
+			index++;
+		}
+
+		return -1;
 	}
 	
 	public void add(int index, E item) {
-		
+		listiterator(index).add(item);
 	}
 	
 	public E get(int index) {
-		
-		return null;
+		return listiterator(index).next();
 	}
 	
-	public boolean remove(int index) {
-		
+	public E remove(int index) {
+		if(index < 0 || index >= size)
+			throw new IndexOutOfBoundsException();
+		ListIterator<E> iter = listiterator(index);
+		E result = iter.next();
+		iter.remove();
+		return result;
+	}
+	
+	public boolean remove(E obj) {
 		return true;
-	}
-	
-	public void remove(E obj) {
-		
 	}
 	
 	public int size() {
